@@ -1,0 +1,20 @@
+import type { Metadata } from "next";
+import { ArrowRight, Boxes, Package, Plane, Ship, Truck, Warehouse, Zap } from "lucide-react";
+import Link from "next/link";
+import { SectionHeading } from "@/components/section-heading";
+import { modeGuides, services } from "@/lib/data";
+
+export const metadata: Metadata = { title: "Freight and logistics services" };
+const icons = [Truck, Plane, Ship, Package];
+const serviceIcons = [Truck, Boxes, Zap, Warehouse];
+
+export default function ServicesPage() {
+  return (
+    <>
+      <section className="inner-hero services-hero"><div className="container inner-hero-grid"><div><p className="eyebrow"><span className="eyebrow-rule" />OUR SERVICES</p><h1>One route.<br /><span>More ways to move.</span></h1><p className="inner-hero-lede">From a single parcel to a full truckload, find the service that fits your shipment and the way your business works.</p><div className="hero-actions"><Link className="button button-amber" href="/contact">Request a quote <ArrowRight size={17} /></Link><Link className="button button-outline" href="/track">Track a shipment <ArrowRight size={16} /></Link></div></div><div className="services-hero-art"><div className="services-art-bg"><span className="art-route art-route-one" /><span className="art-route art-route-two" /><span className="art-dot art-dot-one" /><span className="art-dot art-dot-two" /><Truck size={106} strokeWidth={1.15} /><div className="services-art-label"><span>THE NEXT MILE</span><b>Starts here.</b></div></div><span className="hero-side-note">ROAD · AIR · OCEAN · COURIER</span></div></div></section>
+      <section className="section service-catalog"><div className="container"><SectionHeading kicker="BUILT AROUND YOUR CARGO" title="Choose the service that fits." text="A practical mix of transport and support, with a real person to help make the right call." /><div className="service-detail-grid">{services.map((service, index) => { const Icon = serviceIcons[index]; return <article className="service-detail-card" key={service.number}><div className="service-detail-top"><span className="service-icon service-icon-large"><Icon size={24} /></span><span className="service-tag">{service.tag}</span></div><h3>{service.title}</h3><p>{service.detail}</p><Link href="/contact" className="text-link">Request this service <ArrowRight size={15} /></Link></article>; })}</div></div></section>
+      <section className="section modes-section"><div className="container"><div className="section-row modes-heading-row"><SectionHeading kicker="TRANSPORT MODES" title="The best fit for every leg." text="Mode selection depends on distance, urgency, cargo and available capacity." /><span className="modes-heading-badge">Confirm each booking with dispatch</span></div><div className="mode-table">{modeGuides.map((mode, index) => { const Icon = icons[index]; return <article className="mode-row" key={mode.title}><div className="mode-icon"><Icon size={22} /></div><div className="mode-name"><span>{mode.label}</span><h3>{mode.title}</h3></div><p className="mode-description">{mode.description}</p><div className="mode-limit"><span>WEIGHT & SIZE GUIDE</span><p>{mode.limit}</p></div><Link href="/contact" className="mode-arrow" aria-label={`Request a ${mode.title} quote`}><ArrowRight size={18} /></Link></article>; })}</div><p className="capacity-note"><span>CAPACITY NOTE</span> The ranges above are illustrative planning guides only. Actual acceptance depends on carrier, vehicle, route, packaging, dimensions and cargo type. Confirm all limits with the team before dispatch.</p></div></section>
+      <section className="service-cta"><div className="container service-cta-inner"><div><p className="eyebrow eyebrow-light"><span className="eyebrow-rule" />NOT SURE WHICH SERVICE?</p><h2>Tell us what needs to move.</h2><p>We'll help you work out a sensible plan for the route and cargo.</p></div><Link className="button button-amber" href="/contact">Request a quote <ArrowRight size={17} /></Link></div></section>
+    </>
+  );
+}

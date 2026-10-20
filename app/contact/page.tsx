@@ -1,0 +1,14 @@
+import type { Metadata } from "next";
+import { ArrowRight, Clock3, Mail, MapPin, PhoneCall } from "lucide-react";
+import { ContactForm } from "@/components/contact-form";
+
+export const metadata: Metadata = { title: "Contact and request a quote" };
+
+export default function ContactPage() {
+  return (
+    <>
+      <section className="contact-hero"><div className="container"><p className="eyebrow"><span className="eyebrow-rule" />LET'S GET IN TOUCH</p><h1>Tell us what<br /><span>needs to move.</span></h1><p className="inner-hero-lede">Share the route, the cargo and the timing. We'll help you work through the details.</p></div><span className="contact-hero-route" aria-hidden="true" /></section>
+      <section className="contact-main"><div className="container contact-main-grid"><div className="contact-details"><div className="contact-form-intro"><span className="eyebrow"><span className="eyebrow-rule" />SEND AN INQUIRY</span><h2>Start a conversation.</h2><p>A few details are enough to get things moving.</p></div><ContactForm /><div className="contact-details-panel"><h3>Reach the team</h3><div className="contact-detail-row"><span><PhoneCall size={17} /></span><div><small>EMERGENCY DISPATCH</small><b>Phone line to be confirmed</b><p>Add your published dispatch number before launch.</p></div></div><div className="contact-detail-row"><span><Mail size={17} /></span><div><small>EMAIL</small><b>Email address to be confirmed</b><p>Connect a monitored business inbox before launch.</p></div></div><div className="contact-detail-row"><span><Clock3 size={17} /></span><div><small>TEAM HOURS</small><b>Hours to be confirmed</b><p>Share your operating hours so customers know when to expect a reply.</p></div></div></div></div><aside className="contact-map-panel"><div className="map-placeholder"><div className="map-grid-lines" /><span className="map-pin map-pin-main"><MapPin size={21} fill="currentColor" /></span><span className="map-pin map-pin-secondary"><MapPin size={16} fill="currentColor" /></span><span className="map-route-line map-route-line-one" /><span className="map-route-line map-route-line-two" /><span className="map-ring map-ring-one" /><span className="map-ring map-ring-two" /><div className="map-label map-label-one">OFFICE LOCATION</div><div className="map-label map-label-two">SERVICE AREA</div><span className="map-compass">N</span></div><div className="map-placeholder-caption"><span><MapPin size={18} /></span><div><b>Office location to be confirmed</b><p>Add your verified address to show an interactive map here.</p></div><ArrowRight size={17} /></div><div className="contact-response-note"><span className="status-dot" /><p><b>We'd like to hear from you.</b><span>Connect the form and add your dispatch details to make this page ready for customers.</span></p></div></aside></div></section>
+    </>
+  );
+}
